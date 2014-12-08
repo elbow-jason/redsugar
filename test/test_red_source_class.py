@@ -13,11 +13,15 @@ def test_what_is_red_sugar_made_of():
 class TestRedSource(unittest.TestCase):
 
     def setUp(self):
-        self.source = RedSource()
+        self.source = RedSource('test/sample_source_1.reds')
 
     def tearDown(self):
         pass
 
+    def test_redsource_initialization(self):
+        self.source = RedSource('test/sample_source_1.reds')
+
     def test_redsource_opens_a_file(self):
-        text = self.source.read('samplesource.rs')
-        self.assertIn(text, 'Jason')
+        self.source.text = ''
+        self.source.text = self.source.read('test/sample_source_1.reds')
+        self.assertIn('Jason', self.source.text)

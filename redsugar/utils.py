@@ -6,8 +6,8 @@ class RedSource(object):
 
     The Source object shall present
     """
-    def __init__(self):
-        pass
+    def __init__(self, file):
+        self.text = self.read(filename)
 
     def read(self, filename):
         with open(filename, 'r') as f:
