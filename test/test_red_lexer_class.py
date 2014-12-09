@@ -23,6 +23,11 @@ class TestRedLexer(unittest.TestCase):
     def test_tokenize_makes_list(self):
         self.assertIs(list, type(self.lexer.tokens))
 
+    def test_remove_all_newlines(self):
+        test_string = "I\nhave\nno\nnewlines"
+        no_newlines = self.lexer.remove_all_newlines(test_string)
+        self.assertNotIn('\n', no_newlines)
+
     def test_tokenize_removes_newlines(self):
         for item in self.lexer.tokens:
             self.assertNotIn('\n', item)
@@ -31,18 +36,28 @@ class TestRedLexer(unittest.TestCase):
         self.assertEqual(self.lexer.tokens[0], 'fn')
         self.assertEqual(self.lexer.tokens[1], 'hello')
         self.assertEqual(self.lexer.tokens[2], 'print')
+
+    def test_tokenize_isolates_double_quotes_correctly(self):
         self.assertEqual(
             self.lexer.tokens[3],
             '"',
-            "first single quote not alone"
+            "first single quote not alone. token was: {}".format(
+                self.lexer.tokens[3]
+            )
         )
-        self.assertEqual(self.lexer.tokens[4], "hello")
         self.assertEqual(
             self.lexer.tokens[3],
             '"',
-            "second single quote not alone"
+            "second single quote not alone. token was: {}".format(
+                self.lexer.tokens[3]
+            )
         )
-        self.assertEqual(self.lexer.tokens[2], 'end')
+
+    def test_tokenized_list_ends_with_end(self):
+        self.assertEqual(self.lexer.tokens[-1], 'end')
+
+    def test_view_tokens(self):
+        assert 0 is self.lexer.tokens
 
     def test_remove_empty_tokens(self):
         self.assertNotIn('', self.lexer.tokens)
