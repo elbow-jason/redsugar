@@ -22,6 +22,7 @@ end
         self.assertEqual(self.lexer.tokens[2], 'fn')
 
     def test_remove_empty_tokens(self):
-        self.lexer.tokenize()
-        self.lexer.remove_empty_tokens()
         self.assertNotIn('', self.lexer.tokens)
+
+    def test_remove_newlines(self):
+        self.assertNotIn('\n', self.lexer.tokens)
