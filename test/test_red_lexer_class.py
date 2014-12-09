@@ -22,5 +22,6 @@ end
         self.assertEqual(self.lexer.tokens[2], 'fn')
 
     def test_remove_empty_tokens(self):
-        self.lexer.remove_emtpy_tokens()
+        self.lexer.tokenize()
+        self.lexer.remove_empty_tokens()
         self.assertNotIn('', self.lexer.tokens)

@@ -23,3 +23,9 @@ class RedLexer(object):
 
     def tokenize(self):
         self.tokens = self.text.split(' ')
+        self.remove_empty_tokens()
+
+    def remove_empty_tokens(self):
+        if '' in self.tokens:
+            self.tokens.remove('')
+            self.remove_empty_tokens()
