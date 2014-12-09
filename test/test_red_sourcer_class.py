@@ -2,7 +2,7 @@ import unittest
 
 from redsugar.sourcer import RedSourcer
 
-TESTING_FILE_PATH = 'test/sample_source_1.reds'
+TESTING_FILE_PATH = 'test/sample_source_1.redsugar'
 
 
 class TestRedSource(unittest.TestCase):
