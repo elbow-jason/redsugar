@@ -1,3 +1,8 @@
 
 class RedScanner(object):
-    pass
+
+    def __init__(self, text):
+        self.text = text
+
+    def start(self):
+        pass
