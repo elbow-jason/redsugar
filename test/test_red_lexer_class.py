@@ -5,6 +5,7 @@ from redsugar.lexer import RedLexer
 
 from testing_source_code import TESTING_SOURCE_CODE
 
+
 class TestRedLexer(unittest.TestCase):
 
     def setUp(self):
@@ -15,18 +16,22 @@ class TestRedLexer(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_matcher(self):
+        self.lexer.match()
+
     def test_found_keyword_def(self):
         self.lexer.tokenize()
         self.assertIn('def', self.lexer.tokens)
 
     def test_removal_of_preceding_space_per_line(self):
-        pass
+        self.assertEqual(self.lexer.original, TESTING_SOURCE_CODE)
+        self.assertNotIn('\n ', self.lexer.text)
 
     def test_found_keyword_print(self):
         self.lexer.tokenize()
         self.assertIn('print', self.lexer.tokens)
 
-    def test_found_keyword_print(self):
+    def test_found_keyword_end(self):
         self.lexer.tokenize()
         self.assertIn('end', self.lexer.tokens)
 

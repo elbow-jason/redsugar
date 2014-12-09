@@ -1,4 +1,5 @@
 
+from redsugar.regexes import regex_dictionary
 
 class RedLexer(object):
     """
@@ -13,8 +14,8 @@ class RedLexer(object):
         #self.tokens = self.text.split(' ')
         self.remove_empty_tokens(self.tokens)
 
-    def match_def(self):
-        pass
+    def 
+
 
 
 
