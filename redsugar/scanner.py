@@ -1,5 +1,9 @@
 
+
 class RedScanner(object):
+    """
+    RedScanner is a scanner. It goes back and forth.
+    """
 
     def __init__(self, text):
         self.text = text

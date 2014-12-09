@@ -7,6 +7,7 @@ class RedSourcer(object):
 
     The Source object shall read the redsugar source file.
     """
+
     def __init__(self, filepath):
         self.path = filepath
 

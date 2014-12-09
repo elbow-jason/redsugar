@@ -3,12 +3,7 @@ import unittest
 
 from redsugar.lexer import RedLexer
 
-TESTING_SOURCE_CODE = """
-fn hello
-    print "hello world"
-end
-"""
-
+from testing_source_code import TESTING_SOURCE_CODE
 
 class TestRedLexer(unittest.TestCase):
 
@@ -19,6 +14,21 @@ class TestRedLexer(unittest.TestCase):
 
     def tearDown(self):
         pass
+
+    def test_found_keyword_def(self):
+        self.lexer.tokenize()
+        self.assertIn('def', self.lexer.tokens)
+
+    def test_removal_of_preceding_space_per_line(self):
+        pass
+
+    def test_found_keyword_print(self):
+        self.lexer.tokenize()
+        self.assertIn('print', self.lexer.tokens)
+
+    def test_found_keyword_print(self):
+        self.lexer.tokenize()
+        self.assertIn('end', self.lexer.tokens)
 
     def test_tokenize_makes_list(self):
         self.assertIs(list, type(self.lexer.tokens))
@@ -33,7 +43,7 @@ class TestRedLexer(unittest.TestCase):
             self.assertNotIn('\n', item)
 
     def test_tokenize_content_is_as_expected(self):
-        self.assertEqual(self.lexer.tokens[0], 'fn')
+        self.assertEqual(self.lexer.tokens[0], 'def')
         self.assertEqual(self.lexer.tokens[1], 'hello')
         self.assertEqual(self.lexer.tokens[2], 'print')
 

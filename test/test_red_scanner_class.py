@@ -2,12 +2,9 @@
 import unittest
 
 from redsugar.scanner import RedScanner
-from redsugar.sourcer import RedSourcer
+#from redsugar.sourcer import RedSourcer
 
-TESTING_SOURCE_CODE = """fn hello do
-    print "hello world"
-end
-"""
+from testing_source_code import TESTING_SOURCE_CODE
 
 
 class TestRedScanner(unittest.TestCase):
@@ -16,7 +13,7 @@ class TestRedScanner(unittest.TestCase):
     and is used by the lexer to tranverse the redsugar source code.
     """
     def setUp(self):
-        self.sourcer = RedSourcer('test/sample_source_1.reds')
+        #self.sourcer = RedSourcer('test/sample_source_1.redsugar')
         self.scanner = RedScanner(TESTING_SOURCE_CODE)
 
     def test_text_contains_source(self):
@@ -41,7 +38,7 @@ class TestRedScanner(unittest.TestCase):
     def test_get(self):
         self.scanner.position = 1
         current_char = self.scanner.get()
-        self.assertEqual(current_char, 'n')
+        self.assertEqual(current_char, 'd')
 
     def test_mark(self):
         self.scanner.position = 2

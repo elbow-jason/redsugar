@@ -1,5 +1,5 @@
 
-fn some_func
+def some_func
   print "Jason"
 end
 
