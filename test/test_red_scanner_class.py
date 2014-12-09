@@ -49,22 +49,34 @@ class TestRedScanner(unittest.TestCase):
         self.assertEqual(self.scanner.marker, 2)
 
     def test_diff(self):
-        self.scanner.marker = 6
-        self.scanner.position = 2
-        delta = self.diff()
-        self.assertEqual(delta, -4)
-        self.scanner.position = 12
-        delta = self.diff()
-        self.assertEqual(delta, 6)
+        self.scanner.marker     = 6
+        self.scanner.position   = 2
+        delta1                  = self.scanner.diff()
+        self.scanner.position   = 12
+        delta2                  = self.scanner.diff()
+        self.assertEqual(delta1, -4)
+        self.assertEqual(delta2, 6)
 
     def test_goto(self):
         self.scanner.goto(3)
         self.assertEqual(self.scanner.position, 3)
 
     def test_find_next(self):
-        self.scanner.text = """Jason Louis"""
-        self.scanner.position = 3
-        should_be_o = self.scanner.get()
-        should_be_7 = self.scanner.find_next('o')
+        self.scanner.text       = """Jason Louis"""
+        self.scanner.position   = 3
+        should_be_o             = self.scanner.get()
+        should_be_7             = self.scanner.find_next('o')
+        should_also_be_o        = self.scanner.get()
         self.assertEqual(should_be_o, 'o')
+        self.assertEqual(should_also_be_o, 'o')
         self.assertEqual(should_be_7, 7)
+
+    def test_find_prev(self):
+        self.scanner.text       = """Jason Louis"""
+        self.scanner.position   = 7
+        should_be_o             = self.scanner.get()
+        should_be_3             = self.scanner.find_prev('o')
+        should_also_be_o        = self.scanner.get()
+        self.assertEqual(should_be_o, 'o')
+        self.assertEqual(should_also_be_o, 'o')
+        self.assertEqual(should_be_3, 3)
