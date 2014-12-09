@@ -1,18 +1,4 @@
 
-class RedSource(object):
-    """
-    The RedSource object represents the source code file and is
-    responsible for the source file's IO and reference.
-
-    The Source object shall present
-    """
-    def __init__(self, filename):
-        self.text = self.read(filename)
-
-    def read(self, filename):
-        with open(filename, 'r') as f:
-            return f.read()
-
 
 class RedLexer(object):
     """
@@ -32,3 +18,6 @@ class RedLexer(object):
         if '' in tokens:
             tokens.remove('')
             self.remove_empty_tokens(tokens)
+
+    def tokenize_double_quotes(self, tokens):
+        pass  # tokenize

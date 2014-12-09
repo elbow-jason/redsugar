@@ -1,0 +1,3 @@
+
+class RedScanner(object):
+    pass

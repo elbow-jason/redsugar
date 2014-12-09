@@ -1,7 +1,7 @@
 import unittest
 import redsugar
 
-from redsugar.utils import RedSource
+from redsugar.sourcer import RedSource
 
 
 def test_what_is_red_sugar_made_of():

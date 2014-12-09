@@ -1,7 +1,7 @@
 
 import unittest
 
-from redsugar.utils import RedLexer
+from redsugar.lexer import RedLexer
 
 TESTING_SOURCE_CODE = """
 fn hello
@@ -37,27 +37,8 @@ class TestRedLexer(unittest.TestCase):
         self.assertEqual(self.lexer.tokens[1], 'hello')
         self.assertEqual(self.lexer.tokens[2], 'print')
 
-    def test_tokenize_isolates_double_quotes_correctly(self):
-        self.assertEqual(
-            self.lexer.tokens[3],
-            '"',
-            "first single quote not alone. token was: {}".format(
-                self.lexer.tokens[3]
-            )
-        )
-        self.assertEqual(
-            self.lexer.tokens[3],
-            '"',
-            "second single quote not alone. token was: {}".format(
-                self.lexer.tokens[3]
-            )
-        )
-
     def test_tokenized_list_ends_with_end(self):
         self.assertEqual(self.lexer.tokens[-1], 'end')
-
-    def test_view_tokens(self):
-        assert 0 is self.lexer.tokens
 
     def test_remove_empty_tokens(self):
         self.assertNotIn('', self.lexer.tokens)
