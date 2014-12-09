@@ -18,7 +18,7 @@ class TestRedSource(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_redsource_initialization(self):
+    def test_redsourcde_initialization(self):
         self.source = RedSource('test/sample_source_1.reds')
 
     def test_redsource_opens_a_file(self):

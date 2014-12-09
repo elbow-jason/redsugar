@@ -12,3 +12,14 @@ class RedSource(object):
     def read(self, filename):
         with open(filename, 'r') as f:
             return f.read()
+
+
+class RedLexer(object):
+    """
+    Lexer tokenizes redsugar source.
+    """
+    def __init__(self, source):
+        self.text = source
+
+    def tokenize(self):
+        self.tokens = self.text.split(' ')
