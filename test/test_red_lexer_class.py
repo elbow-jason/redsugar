@@ -17,7 +17,11 @@ class TestRedLexer(unittest.TestCase):
         pass
 
     def test_matcher(self):
-        self.lexer.match()
+        self.lexer.text = "def end"
+        self.lexer.match("def")
+        self.lexer.match("end")
+        self.assertIn('def', self.lexer.tokens)
+        self.assertIn('end', self.lexer.tokens)
 
     def test_found_keyword_def(self):
         self.lexer.tokenize()
