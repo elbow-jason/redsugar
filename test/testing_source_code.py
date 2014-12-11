@@ -1,15 +1,8 @@
 
 TESTING_SOURCE_CODE = """
-def hello
-    print "hello world"
-end
+fn one
+    content = 1
+    return content
 
-def noway
-    def what
-        fncrap = 1
-        bend = true
-        indef = false
-    end
-    return
-end
+x = one
 """

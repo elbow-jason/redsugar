@@ -38,7 +38,7 @@ class TestRedScanner(unittest.TestCase):
     def test_get(self):
         self.scanner.position = 1
         current_char = self.scanner.get()
-        self.assertEqual(current_char, 'd')
+        self.assertEqual(current_char, 'f')
 
     def test_mark(self):
         self.scanner.position = 2

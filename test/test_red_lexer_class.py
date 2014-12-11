@@ -24,7 +24,7 @@ class TestRedLexer(unittest.TestCase):
         self.assertIn(
             'end',
             self.lexer.tokens,
-            "\"{}\"".format(self.lexer.text)
+            "{}".format(self.lexer.text)
         )
 
     def lex_keyword(self, word, string):
@@ -32,16 +32,16 @@ class TestRedLexer(unittest.TestCase):
         self.lexer.tokenize()
         self.assertIn(word, self.lexer.tokens)
 
-    def test_found_keyword_end(self):
-        self.lex_keyword('end', 'end of the world')
-        self.assertEqual(self.lexer.text, 'of the world')
+    #def test_found_keyword_end(self):
+    #    self.lex_keyword('end', 'end of the world')
+    #    self.assertEqual(self.lexer.text, 'of the world')
 
     def test_found_keyword_fn(self):
         self.lex_keyword('fn', 'fn something()\nof the world')
         self.assertEqual(self.lexer.text, 'of the world')
 
     def test_found_keyword_end(self):
-        self.lex_keyword('end', 'end of the world')
+        self.lex_keyword('named_var', 'end of the world')
         self.assertEqual(self.lexer.text, 'of the world')
 
     def test_found_keyword_end(self):

@@ -15,10 +15,12 @@ class RedLexer(object):
         }
 
         self.regexes = {
-        'def':      r'\Afn ',
-        'end':      r'\Aend',
+        'fn':      r'\Afn ',
+        #'end':      r'\A[e][n][d][(\n|\z)]',
+
         'newline':  r'\n^',
         'string':   r'".*"',
+        'named_var': r'[a-zA-Z_][a-zA-Z0-9_]*\s'
         }
 
     def string(self, matched):
